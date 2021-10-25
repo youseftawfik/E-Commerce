@@ -1,0 +1,52 @@
+﻿@model Admin.ViewModel.Brands_SubViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row grid-margin">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Edit Sub-Category</h4>
+                        <form asp-action="Edit" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="ID" />
+                            <div class="form-group">
+                                <label asp-for="Brand_Name" class="control-label">Brand Name</label>
+                                <input asp-for="Brand_Name" class="form-control" />
+                                <span asp-validation-for="Brand_Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="File" class="control-label">Brand Image</label>
+                                <input type="file" asp-for="File" name="File" class="form-control" />
+                                <img src="~/uploads/Brands/@Model.Brand_Image" />
+                                <span asp-validation-for="Brand_Image" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="subCategoryID" class="control-label">Sub-Category Name</label>
+                                <select asp-for="subCategoryID" class="form-control"
+                                        asp-items="@(new SelectList(Model.SubCategory,"ID","SubCategory_Name"))"></select>                                <span asp-validation-for="subCategoryID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Update Brand" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

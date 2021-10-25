@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Admin.Models.Products>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Products</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table" style="text-align:center">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product Image</th>
+                                        <th>Product Name</th>
+                                        <th>Sub-Category Name</th>
+                                        <th>Brand Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int increment = 0;}
+
+                                    @foreach (var item in Model)
+                                    {
+                                        increment++;
+                                        <tr>
+                                            <td>@increment</td>
+                                            <td>
+                                                <img src="~/uploads/Brands/@item.Product_Image" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Product_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SubCategory.SubCategory_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Brands.Brand_Name)
+                                            </td>
+                                            <td>
+                                                @*<a asp-action="Details" asp-route-id="@item.ID" class="btn btn-outline-primary">Update</a>*@
+                                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Update</a>
+                                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10</div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                <li class="paginate_button page-item next disabled" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

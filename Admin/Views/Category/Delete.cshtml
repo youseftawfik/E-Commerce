@@ -1,0 +1,44 @@
+﻿@model Admin.Models.Category
+
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row grid-margin">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Delete Category</h4>
+                        <form asp-action="Delete" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="ID" />
+                            <div class="form-group">
+                                <label asp-for="Category_Name" class="control-label">Category Name</label>
+                                <input asp-for="Category_Name" class="form-control" readonly />
+                                <span asp-validation-for="Category_Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Category_Image" class="control-label">Category Image</label>
+                                <span asp-validation-for="Category_Image" class="text-danger"></span><br />
+                                <img src="~/uploads/@Model.Category_Image" width="250" height="250" />
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="Status" disabled /> @Html.DisplayNameFor(model => model.Status)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

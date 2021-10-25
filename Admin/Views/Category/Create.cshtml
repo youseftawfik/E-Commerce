@@ -1,0 +1,50 @@
+﻿@model Admin.ViewModel.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row grid-margin">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Add Category</h4>
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            @if (ViewBag.Message != null)
+                            {
+                                <h5 class="alert alert-danger">@ViewBag.Message</h5>
+                                <h5 class="alert alert-success">@ViewBag.Success</h5>
+                            }
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Category_Name" class="control-label">Category Name</label>
+                                <input asp-for="Category_Name" class="form-control" />
+                                <span asp-validation-for="Category_Name" class="text-danger" data-></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Category_Image" class="control-label">Category Image</label>
+                                <input type="file" name="File" asp-for="File" class="form-control" />
+                                <span asp-validation-for="File" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="Status" class="form-control" /> @Html.DisplayNameFor(model => model.Status)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Add Category" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Admin.Models.Brands>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Brands</h4>
+                @*<p class="alert alert-success">@ViewBag.Activate</p>*@
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table" style="text-align:center">
+                                <thead>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Brand Image</th>
+                                        <th>Brand Name</th>
+                                        <th>Sub-Category Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int increment = 0;}
+
+                                    @foreach (var item in Model)
+                                    {
+                                        increment++;
+                                        <tr>
+                                            <td>@increment</td>
+                                            <td>
+                                                <img src="~/uploads/Brands/@item.Brand_Image" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Brand_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.subCategory.SubCategory_Name)
+                                            </td>
+                                            <td>
+                                                @if (item.Status == true)
+                                                {
+                                                    <label class="badge badge-success">Active</label>
+                                                }
+                                                else
+                                                {
+                                                    <label class="badge badge-danger">Deactive</label>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.Status == true)
+                                                {
+                                                    <a asp-action="Deactivate" asp-route-id="@item.ID" class="btn btn-outline-warning">Deactivate</a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="Activate" asp-route-id="@item.ID" class="btn btn-outline-success">Activate</a>
+                                                }
+                                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">Update</a>
+                                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10</div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                <li class="paginate_button page-item next disabled" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>

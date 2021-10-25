@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>E_Commerce</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AdminControllers\**" />
+    <Compile Remove="wwwroot\Admin\**" />
+    <Content Remove="Controllers\AdminControllers\**" />
+    <Content Remove="wwwroot\Admin\**" />
+    <EmbeddedResource Remove="Controllers\AdminControllers\**" />
+    <EmbeddedResource Remove="wwwroot\Admin\**" />
+    <None Remove="Controllers\AdminControllers\**" />
+    <None Remove="wwwroot\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\fonts\fontawesome-webfont3e6e.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont3e6e.woff2" />
+    <None Include="wwwroot\js\ajax-mail.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\plugins.js" />
+    <None Include="wwwroot\js\switcher.js" />
+    <None Include="wwwroot\js\vendor\bootstrap.min.js" />
+    <None Include="wwwroot\js\vendor\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\js\vendor\modernizr-3.6.0.min.js" />
+    <None Include="wwwroot\js\vendor\popper.min.js" />
+  </ItemGroup>
+
+</Project>
